@@ -10,9 +10,12 @@ module.exports = React.createClass({
 				</head>
 				<body>
 					<div>
-						<h1>eyyyyy</h1>
+						<h1>enter stuff</h1>
+						<form>
+							<input type="text" value={this.state.form} />
+						</form>
 					</div>
-				<script src='./bundle.js' />
+				<script src='/bundle.js' />
 				</body>
 			</html>
 		)

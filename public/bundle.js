@@ -9464,9 +9464,15 @@ module.exports = React.createClass({
 					React.createElement(
 						'h1',
 						null,
-						'eyyyyy'
+						'enter stuff'
+					),
+					React.createElement(
+						'form',
+						null,
+						React.createElement('input', { type: 'text', value: this.state.form })
 					)
-				)
+				),
+				React.createElement('script', { src: '/bundle.js' })
 			)
 		);
 	}
