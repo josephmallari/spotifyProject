@@ -17,16 +17,16 @@ const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const Component = require('./Component.jsx');
 
+app.get('/data', function (req, res) {
+  res.send(data)
+})
+
 app.get('/', function(req, res) {
 	const html = ReactDOMServer.renderToString(
 		React.createElement(Component)
 	); 
 	res.send(html)
 });
-
-app.get('/data.json', function (req, res) {
-  res.send(data)
-})
 
 app.use(express.static(__dirname + '/public'));
 
@@ -36,7 +36,7 @@ const request = require('request'); // "Request" library
 const client_id = '9439aa5f970441a7b1cd191978b6f521'; // Your client id
 const client_secret = 'e00e65589eb34fdb9eb90b85be0e2fab'; // Your secret
 
-const data = '';
+var data;
 
 // your application requests authorization
 const authOptions = {
@@ -63,8 +63,7 @@ request.post(authOptions, function(error, response, body) {
       json: true
     };
     request.get(options, function(error, response, body) {
-			data  = body;
-			console.log(data);
+			data = body;
 		});
 	}
 });
