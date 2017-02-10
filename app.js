@@ -12,15 +12,18 @@ require('babel-register')({
 });
 
 const express = require('express'); // Express web server framework
-const app = express();
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const Component = require('./Component.jsx');
+const path = require('path');
+
+const app = express();
+
 
 app.get('/', function(req, res) {
 	const html = ReactDOMServer.renderToString(
 		React.createElement(Component)
-	); 
+	);
 	res.send(html)
 });
 
@@ -29,8 +32,6 @@ app.get('/data.json', function (req, res) {
 })
 
 app.use(express.static(__dirname + '/public'));
-
-console.log('Listening on 8888');
 
 const request = require('request'); // "Request" library
 const client_id = '9439aa5f970441a7b1cd191978b6f521'; // Your client id
@@ -62,11 +63,14 @@ request.post(authOptions, function(error, response, body) {
       },
       json: true
     };
+
     request.get(options, function(error, response, body) {
-			data  = body;
-			console.log(data);
+			var josephmallari = body;
+      console.log(josephmallari);
 		});
 	}
 });
 
-app.listen(8888);
+module.exports = app;
+
+// app.listen(8888);
